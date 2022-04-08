@@ -27,5 +27,5 @@ saveHighScore = (e) => {
 
   localStorage.setItem('highScore', JSON.stringify(highScores));
 
-  highScores.splice(5);
+  highScores.splice(5); 
 };
