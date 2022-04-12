@@ -13,7 +13,6 @@ username.addEventListener('keyup', () => {
 });
 
 saveHighScore = (e) => {
-  console.log("ta mère la pute");
   e.preventDefault();
 
   const score = {
@@ -25,7 +24,9 @@ saveHighScore = (e) => {
     return b.score - a.score;
   });
 
-  localStorage.setItem('highScore', JSON.stringify(highScores));
+  localStorage.setItem('highScores', JSON.stringify(highScores));
 
   highScores.splice(5); 
+
+  console.log(highScores);
 };
