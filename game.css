@@ -33,6 +33,10 @@
     background-color: #dc3545;
 }
 
+.chosen {
+  background-color:aquamarine !important;
+}
+
 /* HUD */
 
 #hud{
@@ -80,3 +84,6 @@
         transform: rotate(360deg);
     }
 }
+
+
+

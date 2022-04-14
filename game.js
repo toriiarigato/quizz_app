@@ -1,6 +1,6 @@
 //CONSTANTS
 const CORRECT_BONUS = 10;
-const MAX_QUESTION = 3;
+const MAX_QUESTION = 10;
 const question = document.getElementById('question');
 const choices = Array.from(document.getElementsByClassName('choice-text'));
 const progressText = document.getElementById('progressText');
@@ -9,16 +9,25 @@ const progressBarFull = document.getElementById('progressBarFull');
 const loader = document.getElementById('loader');
 const game = document.getElementById('game');
 
-
 //VARIABLES
 let currentQuestion = {};
 let acceptingAnswers = true;
 let questionCounter = 0;
 let availableQuestions = [];
 let questions = [];
+let level = localStorage.getItem('level') || [];
+let selectedQuizz = "";
 
-fetch("https://opentdb.com/api.php?amount=10&category=15&difficulty=medium&type=multiple"
-)
+if(level === 'easy'){
+  selectedQuizz = "https://opentdb.com/api.php?amount=10&difficulty=easy&type=multiple";
+}else if (level === 'medium'){
+  selectedQuizz = "https://opentdb.com/api.php?amount=10&difficulty=medium&type=multiple";
+}else if (level === 'hard'){
+  selectedQuizz = "https://opentdb.com/api.php?amount=10&difficulty=hard&type=multiple";
+}else{
+  selectedQuizz = "https://opentdb.com/api.php?amount=10&difficulty=easy&type=multiple";
+}
+fetch(selectedQuizz)
   .then(res => {
     return res.json();
   })
@@ -48,8 +57,6 @@ fetch("https://opentdb.com/api.php?amount=10&category=15&difficulty=medium&type=
   .catch (err => {
     console.log(err);
   });
-
-
 
 /**
  * Fonction qui lance la 1ère question et qui appelle la fonction getNewQuestion
